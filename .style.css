@@ -85,141 +85,45 @@ tr:hover td {
 tr:hover td a {
 	color: #000;
 }
-/*
-* {
-	box-sizing: border-box;
-  }
-
-  html,
-  body {
-	margin: 0;
-	color: #404040;
-	font-size: 16px;
-	font-family: Roboto, Ubuntu, 'Open Sans', sans-serif;
-	line-height: 1.5;
-  }
-
-  body {
-	min-height: 100vh;
-	border-top: 10px solid #7f8c8d;
-	border-bottom: 10px solid #7f8c8d;
-  }
-
-  main {
-	margin: 0 auto;
-	padding-top: 50px;
-	max-width: 1120px;
-  }
-
-  table {
-	width: 100%;
-	border-collapse: collapse;
-  }
-
-  tbody {
-	display: flex;
-	flex-wrap: wrap;
-  }
-
-  tr {
-	width: 200px;
-	display: flex;
-	flex-direction: column;
-	margin: 10px;
-	border: 1px solid #ddd;
-	cursor: pointer;
-  }
-
-  tr:hover {
-	background-color: #ddd;
-  }
-
-  tr.parent {
-	font-weight: 500;
-  }
-
-  tr.indexhead {
-	  display: none;
-  }
-
-  tr td {
-	display: flex;
-	padding: 0;
-  }
-
-  td.indexcolname a {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-  }
-
-  td.indexcollastmod,
-  td.indexcolsize {
-	display: none;
-  }
-
-  td a {
-	  color: #2980b9;
-	  text-decoration: none;
-	padding: 8px;
-	flex: 1;
-  }
-
-  img {
-	width: 100%;
-	height: 100%;
-  }
-
-  footer {
-	text-align: center;
-	margin: 20px 0;
-	padding: 20px;
-	color: #9099A3;
-  }
-*/
 
 
 
-
-  @media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) {
 	main {
 	  max-width: 280px;
 	}
-  }
+}
 
-  @media only screen and (min-width: 480px) {
+@media only screen and (min-width: 480px) {
 	main {
 	  max-width: 420px;
 	}
-  }
+}
 
 
-  @media only screen and (min-width: 640px) {
+@media only screen and (min-width: 640px) {
 	main {
 	  max-width: 560px;
 	}
-  }
+}
 
-  @media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 	main {
 	  max-width: 700px;
 	}
-  }
+}
 
-  @media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {
 	main {
 	  max-width: 980px;
 	}
-  }
+}
 
-  @media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1280px) {
 	main {
 	  max-width: 1120px;
 	}
-  }
-
-
-
+}
 
 /* icons for file types (icons by famfamfam) */
 
@@ -231,61 +135,3 @@ table tr td:first-of-type{
 td a {
 	background-size: contain !important;
 }
-
-/* images */
-table tr td:first-of-type a[href$=".jpg"],
-table tr td:first-of-type a[href$=".png"],
-table tr td:first-of-type a[href$=".gif"],
-table tr td:first-of-type a[href$=".svg"],
-table tr td:first-of-type a[href$=".jpeg"]
-{background-image: url(./.images/image.png);}
-
-/* zips */
-table tr td:first-of-type a[href$=".zip"]
-{background-image: url(./.images/zip.png);}
-
-/* css */
-table tr td:first-of-type a[href$=".css"]
-{background-image: url(./.images/css.png);}
-
-/* docs */
-table tr td:first-of-type a[href$=".doc"],
-table tr td:first-of-type a[href$=".docx"],
-table tr td:first-of-type a[href$=".ppt"],
-table tr td:first-of-type a[href$=".pptx"],
-table tr td:first-of-type a[href$=".pps"],
-table tr td:first-of-type a[href$=".ppsx"],
-table tr td:first-of-type a[href$=".xls"],
-table tr td:first-of-type a[href$=".xlsx"]
-{background-image: url(./.images/office.png)}
-
-/* videos */
-table tr td:first-of-type a[href$=".avi"],
-table tr td:first-of-type a[href$=".wmv"],
-table tr td:first-of-type a[href$=".mp4"],
-table tr td:first-of-type a[href$=".mov"],
-table tr td:first-of-type a[href$=".m4a"]
-{background-image: url(./.images/video.png);}
-
-/* audio */
-table tr td:first-of-type a[href$=".mp3"],
-table tr td:first-of-type a[href$=".ogg"],
-table tr td:first-of-type a[href$=".aac"],
-table tr td:first-of-type a[href$=".wma"]
-{background-image: url(./.images/audio.png);}
-
-/* web pages */
-table tr td:first-of-type a[href$=".html"],
-table tr td:first-of-type a[href$=".htm"],
-table tr td:first-of-type a[href$=".xml"]
-{background-image: url(./.images/xml.png);}
-
-table tr td:first-of-type a[href$=".php"]
-{background-image: url(./.images/php.png);}
-
-table tr td:first-of-type a[href$=".js"]
-{background-image: url(./.images/script.png);}
-
-/* directories */
-table tr.dir td:first-of-type a
-{background-image: url(./.images/folder.png);}

@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="./.favicon.ico">
     <title>Directory Contents</title>
-    <link rel="stylesheet" href="./.style.css">
+    <link rel="stylesheet" href="./.index.css">
+    <link id='flexible' rel="stylesheet" href="./.style.css">
+    <style>
+      body {
+        margin : 0;
+      }
+      #display-type {
+        height: 20px;
+        width: 20px;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="./grid.css"> -->
     <script src="./.sorttable.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script type='text/javascript'>
+      $('document').ready(function(){
+        $('#display-type').click(function(){
+          var style = $('#display-type').attr('src');
+          if(style == '.images/grid-menu.svg'){
+            console.log($('#display-type').attr('src'));
+            $('link[id="flexible"]').attr('href', './.grid.css');
+            $('#display-type').attr('src', '.images/table-menu.svg');
+          } else if ( style == '.images/table-menu.svg') {
+            $('link[id="flexible"]').attr('href', './.style.css');
+            $('#display-type').attr('src', '.images/grid-menu.svg');
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="container">
@@ -23,7 +50,7 @@
           <?php
             // Adds pretty filesizes
             function sizeInWords($size){
-              if($size<1024){$size=$size." Bytes";}
+              if($size<1024){$size=$size." B";}
               elseif(($size<1048576)&&($size>1023)){$size=round($size/1024, 1)." KB";}
               elseif(($size<1073741824)&&($size>1048575)){$size=round($size/1048576, 1)." MB";}
               else{$size=round($size/1073741824, 1)." GB";}
@@ -150,17 +177,20 @@
                 // Output
                 echo("
                 <tr class='$class'>
-                  <td><a href='./$namehref'$favicon class='name'>".explode(".", $name)[0]."</a></td>
-                  <td><a href='./$namehref'>$extn</a></td>
-                  <td sorttable_customkey='$sizekey'><a href='./$namehref'>$size</a></td>
-                  <td sorttable_customkey='$timekey'><a href='./$namehref'>$modtime</a></td>
+                  <td id='name'><a href='./$namehref'$favicon class='name'>".explode(".", $name)[0]."</a></td>
+                  <td id='type'><a href='./$namehref'>$extn</a></td>
+                  <td id='size' sorttable_customkey='$sizekey'><a href='./$namehref'>$size</a></td>
+                  <td id='timeStamp' sorttable_customkey='$timekey'><a href='./$namehref'>$modtime</a></td>
                 </tr>");
               }
             }
           ?>
         </tbody>
       </table>
-    	<h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2>
+    	<?php echo("<a href='$ahref'><h2 class='hiddenFiles'>$atext hidden files</h2></a>"); ?>
+      <div style='position: fixed; right: 0px; bottom:0px; padding: 5px; box-shadow: 0 0 10px 0px #ddd;'>
+        <img src='.images/grid-menu.svg' id='display-type' />
+      </div>
     </div>
   </body>
 </html>
