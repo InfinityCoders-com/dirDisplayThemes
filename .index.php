@@ -4,29 +4,36 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="./.favicon.ico">
     <title>Directory Contents</title>
+
     <link rel="stylesheet" href="./.index.css">
     <link id='flexible' rel="stylesheet" href="./.style.css">
-    <style>
-      body {
-        margin : 0;
-      }
-      #display-type {
-        height: 20px;
-        width: 20px;
-      }
-    </style>
-    <!-- <link rel="stylesheet" href="./grid.css"> -->
+
     <script src="./.sorttable.js"></script>
-    <script src="./jquery.min.js"></script>
+    <script src="./jquery2.2.4.min.js"></script>
     <script type='text/javascript'>
       $('document').ready(function(){
+        // $('document').load(function(){
+          console.log('session', sessionStorage.getItem('theme'));
+          switch(sessionStorage.getItem('theme')) {
+            case 'grid': {
+              $('link[id="flexible"]').attr('href', './.grid.css');
+              $('#display-type').attr('src', '.images/table-menu.svg');
+              break;
+            }
+            default: {
+              $('link[id="flexible"]').attr('href', './.style.css');
+              $('#display-type').attr('src', '.images/grid-menu.svg');
+            }
+          }
+        // });
         $('#display-type').click(function(){
           var style = $('#display-type').attr('src');
           if(style == '.images/grid-menu.svg'){
-            console.log($('#display-type').attr('src'));
+            sessionStorage.setItem('theme', 'grid');
             $('link[id="flexible"]').attr('href', './.grid.css');
             $('#display-type').attr('src', '.images/table-menu.svg');
           } else if ( style == '.images/table-menu.svg') {
+            sessionStorage.setItem('theme', 'table');
             $('link[id="flexible"]').attr('href', './.style.css');
             $('#display-type').attr('src', '.images/grid-menu.svg');
           }
@@ -35,6 +42,7 @@
     </script>
   </head>
   <body>
+    <div id='loader'></div>
     <div id="container">
     	<h1>Directory Contents</h1>
     	<table class="sortable">

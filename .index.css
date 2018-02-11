@@ -1,3 +1,10 @@
+body {
+  margin : 0;
+}
+#display-type {
+  height: 20px;
+  width: 20px;
+}
 /* images */
 table tr td:first-of-type a[href$=".jpg"],
 table tr td:first-of-type a[href$=".png"],
