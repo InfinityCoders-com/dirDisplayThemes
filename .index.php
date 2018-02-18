@@ -6,26 +6,24 @@
     <title>Directory Contents</title>
 
     <link rel="stylesheet" href="./.index.css">
-    <link id='flexible' rel="stylesheet" href="./.style.css">
+    <link id='flexible' rel="stylesheet" href="./.table.css">
 
     <script src="./.sorttable.js"></script>
     <script src="./jquery2.2.4.min.js"></script>
     <script type='text/javascript'>
       $('document').ready(function(){
-        // $('document').load(function(){
-          console.log('session', sessionStorage.getItem('theme'));
-          switch(sessionStorage.getItem('theme')) {
-            case 'grid': {
-              $('link[id="flexible"]').attr('href', './.grid.css');
-              $('#display-type').attr('src', '.images/table-menu.svg');
-              break;
-            }
-            default: {
-              $('link[id="flexible"]').attr('href', './.style.css');
-              $('#display-type').attr('src', '.images/grid-menu.svg');
-            }
+        console.log('session', sessionStorage.getItem('theme'));
+        switch(sessionStorage.getItem('theme')) {
+          case 'grid': {
+            $('link[id="flexible"]').attr('href', './.grid.css');
+            $('#display-type').attr('src', '.images/table-menu.svg');
+            break;
           }
-        // });
+          default: {
+            $('link[id="flexible"]').attr('href', './.table.css');
+            $('#display-type').attr('src', '.images/grid-menu.svg');
+          }
+        }
         $('#display-type').click(function(){
           var style = $('#display-type').attr('src');
           if(style == '.images/grid-menu.svg'){
@@ -34,7 +32,7 @@
             $('#display-type').attr('src', '.images/table-menu.svg');
           } else if ( style == '.images/table-menu.svg') {
             sessionStorage.setItem('theme', 'table');
-            $('link[id="flexible"]').attr('href', './.style.css');
+            $('link[id="flexible"]').attr('href', './.table.css');
             $('#display-type').attr('src', '.images/grid-menu.svg');
           }
         });
@@ -52,6 +50,7 @@
             <th>Type</th>
             <th>Size</th>
             <th>Date Modified</th>
+            <th>Hidden</th>
           </tr>
         </thead>
         <tbody>
@@ -125,7 +124,6 @@
                 if(is_dir($dirArray[$index])) {
                   $extn="&lt;Directory&gt;";
                   $size = sizeInWords(folderSize($dirArray[$index]));
-                  // $size="&lt;Directory&gt;";
                   $sizekey="0";
                   $class="dir";
 
@@ -136,8 +134,8 @@
                   }
 
                   // Cleans up . and .. directories
-                  if($name=="."){$name=". (Current Directory)"; $extn="&lt;System Dir&gt;"; $favicon=" style='background-image:url($namehref/.favicon.ico);'";}
-                  if($name==".."){$name=".. (Parent Directory)"; $extn="&lt;System Dir&gt;";}
+                  if($name=="."){$name="(Current Directory)"; $extn="&lt;System Dir&gt;"; $favicon=" style='background-image:url($namehref/.favicon.ico);'";}
+                  if($name==".."){$name="(Parent Directory)"; $extn="&lt;System Dir&gt;";}
                 }
 
                 // File-only operations
@@ -181,14 +179,22 @@
                   $size=pretty_filesize($dirArray[$index]);
                   $sizekey=filesize($dirArray[$index]);
                 }
-
-                // Output
+                $hidden = '';
+                if(strpos($name, ".") === 0){
+                  $name = explode(".", $name)[1];
+                  $hidden = "<a href='./$namehref'>Hidden</a>";
+                } else if(strpos($name, ".") !== true && strpos($name, ".") === false){
+                  $name = $name;
+                } else {
+                  $name = explode(".", $name)[0];
+                }
                 echo("
                 <tr class='$class'>
-                  <td id='name'><a href='./$namehref'$favicon class='name'>".explode(".", $name)[0]."</a></td>
+                  <td id='name'><a href='./$namehref'$favicon class='name'>".$name."</a></td>
                   <td id='type'><a href='./$namehref'>$extn</a></td>
                   <td id='size' sorttable_customkey='$sizekey'><a href='./$namehref'>$size</a></td>
                   <td id='timeStamp' sorttable_customkey='$timekey'><a href='./$namehref'>$modtime</a></td>
+                  <td id='hidden' sorttable_customkey='$hiddenKey'>$hidden</td>
                 </tr>");
               }
             }
