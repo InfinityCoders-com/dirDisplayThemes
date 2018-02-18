@@ -57,7 +57,7 @@ table tr td:first-of-type a[href$=".php"]
 {background-image: url(./.images/php.svg);}
 
 table tr td:first-of-type a[href$=".js"]
-{background-image: url(./.images/script.png);}
+{background-image: url(./.images/js.svg);}
 
 /* directories */
 table tr.dir td:first-of-type a
