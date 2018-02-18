@@ -65,6 +65,11 @@ tr td {
 td#name {
   font-size: 13px;
   font-family: poor richard;
+  padding-bottom: 20px;
+  height: 130px;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 td#type {
@@ -194,14 +199,9 @@ footer {
 
 /* icons for file types (icons by famfamfam) */
 
-table tr td#name{
-  padding-bottom: 20px;
-}
-
 table tr td:first-of-type a {
   padding-top: 107px;
   background-position: 4px 0px;
   background-repeat: no-repeat;
   background-size: contain !important;
-  height: 110px;
 }

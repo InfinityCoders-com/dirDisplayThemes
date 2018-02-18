@@ -119,12 +119,13 @@
                 $modtime=date("M j Y g:i A", filemtime($dirArray[$index]));
                 $timekey=date("YmdHis", filemtime($dirArray[$index]));
 
+                // Gets Size
+                $sizekey = filesize($dirArray[$index]);
 
                 // Separates directories, and performs operations on those directories
                 if(is_dir($dirArray[$index])) {
                   $extn="&lt;Directory&gt;";
                   $size = sizeInWords(folderSize($dirArray[$index]));
-                  $sizekey="0";
                   $class="dir";
 
                   // Gets favicon.ico, and displays it, only if it exists.
@@ -135,7 +136,7 @@
 
                   // Cleans up . and .. directories
                   if($name=="."){$name="(Current Directory)"; $extn="&lt;System Dir&gt;"; $favicon=" style='background-image:url($namehref/.favicon.ico);'";}
-                  if($name==".."){$name="(Parent Directory)"; $extn="&lt;System Dir&gt;";}
+                  if($name==".."){$name="(Parent Directory)"; $extn="&lt;System Dir&gt;"; }
                 }
 
                 // File-only operations
@@ -177,7 +178,6 @@
 
                   // Gets and cleans up file size
                   $size=pretty_filesize($dirArray[$index]);
-                  $sizekey=filesize($dirArray[$index]);
                 }
                 $hidden = '';
                 if(strpos($name, ".") === 0){
@@ -190,7 +190,7 @@
                 }
                 echo("
                 <tr class='$class'>
-                  <td id='name'><a href='./$namehref'$favicon class='name'>".$name."</a></td>
+                  <td id='name' title='$name'><a href='./$namehref'$favicon class='name'>".$name."</a></td>
                   <td id='type'><a href='./$namehref'>$extn</a></td>
                   <td id='size' sorttable_customkey='$sizekey'><a href='./$namehref'>$size</a></td>
                   <td id='timeStamp' sorttable_customkey='$timekey'><a href='./$namehref'>$modtime</a></td>
