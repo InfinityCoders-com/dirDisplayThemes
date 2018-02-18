@@ -54,7 +54,7 @@ a {
 }
 
 td a {
-	color: #663300;
+	color: #707070;
 	display: block;
 	padding: 5px 10px;
 }
@@ -63,6 +63,7 @@ th a {
 }
 
 td:first-of-type a {
+	color: #2e2e2e;
 	background: url(./.images/file.png) no-repeat 10px 50%;
 	padding-left: 40px;
 }

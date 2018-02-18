@@ -29,7 +29,32 @@ table {
 }
 
 thead {
+  position: absolute;
+  top: 10px;
+  right: 120px;
+  background: #fff;
+}
+
+th {
   display: none;
+  text-align: left;
+  padding: 0 5px;
+  font-weight: 300;
+}
+
+thead tr:after {
+  content: "Sort";
+  text-align: center;
+  transition: 1s ease-in-out;
+}
+
+thead tr:hover th{
+  display: flex;
+}
+
+thead tr:hover:after{
+  content: "";
+  transition: 1s ease-in-out;
 }
 
 tbody {
@@ -38,7 +63,7 @@ tbody {
 }
 
 tr {
-  width: 120px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -50,7 +75,6 @@ tr {
 tr:hover {
   box-shadow: 0px 5px 25px #ddd;
   transition: .2s;
-  /* background-color: #ddd; */
 }
 
 tr.indexhead {
@@ -200,8 +224,9 @@ footer {
 /* icons for file types (icons by famfamfam) */
 
 table tr td:first-of-type a {
-  padding-top: 107px;
   background-position: 4px 0px;
   background-repeat: no-repeat;
   background-size: contain !important;
+  padding-top: 107px;
+  margin: 0 10px;
 }
